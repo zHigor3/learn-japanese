@@ -1,7 +1,7 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
 import ReactDOM from 'react-dom/client'; // Importando do 'react-dom/client'
-
-const App = () => <h1>Olá, React com TypeScript!</h1>;
+import App from './App';
 
 // Obtendo o elemento raiz do DOM
 const rootElement = document.getElementById('root');
