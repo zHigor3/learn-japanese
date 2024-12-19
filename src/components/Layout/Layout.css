@@ -1,7 +1,7 @@
 .layout {
    display: flex;
    flex-direction: column;
-   min-height: 100vh;  /* Garante que o layout ocupe a altura total da tela */
+   min-height: 100vh;
 }
 .navbar {
    background-color: #666;
@@ -17,12 +17,6 @@
    flex: 1;
    margin-top: 64px;
 }
-.footer {
-   background-color: #333;
-   color: white;
-   padding: 10px 0;
-   width: 100%;
-}
 .container-button {
    display: flex;
    padding: 6px;
@@ -32,4 +26,19 @@
 }
 .container-nav-user {
    padding: 12px;
+   height: 52px;
+   display: flex;
+   align-items: center;
+}
+.container-nav-user span {
+   margin-bottom: 4px;
+   margin-left: 12px;
+   font-size: 18px;
+   padding: 0;
+}
+.nav-button-container {
+   display: flex;
+   padding-top: 6px;
+   padding-left: 6px;
+   padding-right: 6px;
 }

@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { Component, FC } from 'react'
+import './Home.css'
+import Hiragana from '../../components/Hiragana/Hiragana';
 
-const Home = () => {
+const Home: FC = () => {
   return (
-   <div>
-      <h1>Home Page</h1>
-   </div>
-  );
-};
+    <div>
+      <Hiragana />
+    </div>
+  )
+}
 
-export default Home;
+export default Home
