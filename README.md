@@ -1,28 +1,25 @@
-# React + TypeScript Template
+# Learn Japanese
 
-Este é um template para criar projetos React com TypeScript, configurado com Webpack e hot reload.
+Esta aplicação consiste em ajudar as pessoas a decorar os alfabetos Hiragana e Katakana do idioma Japonês.
 
 ## Como usar
 
-1. Clique no botão **Use this template** no GitHub.
-2. Clone o novo repositório:
+1. Faça o clone do repositório:
    ```bash
-   git clone https://github.com/zHigor3/react-template-typescript.git
-   cd react-template-typescript
-3. Instale as dependências:
+   git clone https://github.com/zHigor3/learn-japanese.git
+   cd learn-japanese
+3. Instale as dependências de projeto:
    ```bash
    npm install
-4. Inicie o servidor de desenvolvimento:
+4. Inicie o servidor da aplicação:
    ```bash
    npm start
 
 ## Funcionalidades
 
-- React 18
-- TypeScript
-- Webpack
-- Hot Reload
+- Quiz do alfabeto Hiragana
+- Quiz do alfabeto Katakana
 
 ## Personalização
 
-Você pode editar o template para adicionar suas configurações e dependências padrão.
+Você pode editar o projeto para adicionar suas configurações e necessidades para aprender a lingua japonesa!
