@@ -1,0 +1,32 @@
+{
+   "welcome": "Bem-vindo",
+   "greeting": "Olá, {{name}}!",
+   "navDrawer": {
+      "home": "Início",
+      "about": "Sobre o projeto",
+      "title": "Aprenda Japonês"
+   },
+   "about": {
+      "title": "Projeto: Aprenda Japonês",
+      "description": "Este projeto foi criado com o objetivo de ajudar as pessoas a aprenderem japonês de maneira fácil e divertida. Através de jogos interativos, lições e exercícios, os usuários podem melhorar suas habilidades na língua japonesa, praticando desde o Hiragana e Katakana até vocabulário e frases comuns.",
+      "goal": "Não importa se você é um iniciante ou já tem alguma experiência no idioma. Nosso objetivo é tornar o aprendizado acessível e motivador para todos, oferecendo conteúdo de qualidade que se adapta ao seu ritmo."
+   },
+   "footer": {
+      "about": "Sobre",
+      "aboutDev": "Sobre o Desenvolvedor",
+      "devBy": "Desenvolvido por",
+      "personality": "um entusiasta de tecnologia e desenvolvimento web.",
+      "contact": "Contato",
+      "tecUsed": "Tecnologias Utilizadas",
+      "importantLinks": "Links Importantes",
+      "rights": "Todos os direitos reservados."
+   },
+   "practice": {
+      "practice": "Pratique",
+      "restart": "Reiniciar",
+      "congratulation": "Parabéns! você acertou {{n}} de {{total}}!",
+      "hits": "Acertos",
+      "misses": "Erros"
+   }
+ }
+ 

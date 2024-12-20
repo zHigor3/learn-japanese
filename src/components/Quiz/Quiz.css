@@ -1,0 +1,22 @@
+.container {
+   display: flex;
+   justify-content: center;
+   flex-wrap: wrap;
+   background-color: #f4f4f9;
+   border-radius: 8px;
+   padding: 24px;
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.container-quizlatter {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+}
+.container-quizlatter-options {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+}
+.quizlatter-options-button {
+   padding: 12px;
+}

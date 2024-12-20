@@ -1,42 +1,10 @@
 // src/components/NavButton.tsx
 import React, { ReactNode } from 'react'
 import { Link } from 'react-router-dom'
-import './Utils.css' // Arquivo CSS para estilos personalizados
+import './Utils.css'
+import { NavButtonProps, ButtonProps, DrawerMenuProps } from './UtilsInterfaces'
 
-interface NavButtonProps {
-  to: string
-  label: string
-  bgColor?: string
-  fontColor?: string
-  className?: string
-  onClick?: () => void
-}
-
-export const NavButton: React.FC<NavButtonProps> = ({ to, label, className = '', onClick, bgColor = "#333", fontColor = "#fff" }) => {
-  const handleClick = () => {
-    if (onClick) {
-      onClick() // Executa a função de callback, se fornecida
-    }
-  }
-
-  return (
-    <Link 
-      to={to} 
-      className={`nav-button ${className}`} 
-      onClick={handleClick} 
-      style={{backgroundColor: bgColor, color: fontColor}}
-    >
-      {label}
-    </Link>
-  )
-}
-
-interface ButtonProps {
-  label: string
-  onClick?: () => void
-}
-
-export const Button: React.FC<ButtonProps> = ({ label, onClick }) => {
+export const NavButton: React.FC<NavButtonProps> = ({ to, label, className = '', onClick }) => {
   const handleClick = () => {
     if (onClick) {
       onClick()
@@ -44,16 +12,28 @@ export const Button: React.FC<ButtonProps> = ({ label, onClick }) => {
   }
 
   return (
-    <button onClick={handleClick}>
+    <Link 
+      to={to} 
+      className={`nav-button ${className}`} 
+      onClick={handleClick}
+    >
       {label}
-    </button>
+    </Link>
   )
 }
 
-interface DrawerMenuProps {
-  children: ReactNode
-  onShow: boolean
-  onClose: () => void
+export const Button: React.FC<ButtonProps> = ({ label, onClick, className }) => {
+  const handleClick = () => {
+    if (onClick) {
+      onClick()
+    }
+  }
+
+  return (
+    <button onClick={handleClick} className={`button ${className}`} >
+      {label}
+    </button>
+  )
 }
 
 export const DrawerMenu: React.FC<DrawerMenuProps> = ({ children, onShow, onClose }) => {
@@ -68,3 +48,14 @@ export const DrawerMenu: React.FC<DrawerMenuProps> = ({ children, onShow, onClos
     </div>
   )
 }
+
+export const LoadArchive = async (type: string, archive: string) => {
+  try {
+    const data = await import(`../../assets/${type}/${archive}.${type}`);
+    return { status: "success", payload: data.default};
+  }
+  catch(error) {
+    console.log(error)
+    return { status: "error", payload: error }
+  }
+};

@@ -4,6 +4,7 @@ import { NavButton, DrawerMenu } from '../Utils/Utils'
 import { Footer } from './Footer'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
+import { useTranslation } from 'react-i18next';
 
 interface LayoutProps {
   children: ReactNode // Tipando 'children' como ReactNode
@@ -11,6 +12,11 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   const [toggleMenu, setToggleMenu] = useState(false)
+  const { t, i18n } = useTranslation();
+
+  const changeLanguage = (lng: string) => {
+    i18n.changeLanguage(lng);
+  };
 
   return (
     <div className='layout'>
@@ -18,19 +24,15 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         <div className='col-12 nav-button-container'>
           <NavButton 
             to="/" 
-            label='Home' 
+            label={t('navDrawer.home')} 
             className='col-12'
-            bgColor='#333'
-            fontColor='#fff'
           />
         </div>
         <div className='col-12 nav-button-container'>
           <NavButton 
             to="/about" 
-            label='Sobre o Projeto' 
+            label={t('navDrawer.about')} 
             className='col-12'
-            bgColor='#333'
-            fontColor='#fff'
           />
         </div>
       </DrawerMenu>
@@ -39,7 +41,12 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           <button onClick={() => setToggleMenu(true)} style={{backgroundColor: '#00000000', border: 0}}>
             <FontAwesomeIcon icon={faBars} color='white' fontSize={24} />
           </button>
-          <span>あ Learn Japanese</span>
+          <span>あ {t('navDrawer.title')} </span>
+          <div className="language-selector">
+
+            <button onClick={() => changeLanguage('pt')}>PT</button>
+            <button onClick={() => changeLanguage('en')}>EN</button>
+          </div>
         </div>
       </div>
 

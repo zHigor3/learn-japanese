@@ -1,0 +1,32 @@
+{
+   "welcome": "Welcome",
+   "greeting": "Hello, {{name}}!",
+   "navDrawer": {
+      "home": "Home",
+      "about": "About project",
+      "title": "Learn Japanese"
+   },
+   "about": {
+      "title": "Project: Learn Japanese",
+      "description": "This project was created with the goal of helping people learn Japanese in an easy and fun way. Through interactive games, lessons, and exercises, users can improve their skills in the Japanese language, practicing from Hiragana and Katakana to vocabulary and common phrases.",
+      "goal": "It doesn't matter if you're a beginner or already have some experience in the language. Our goal is to make learning accessible and motivating for everyone, providing quality content that adapts to your pace."
+   },
+   "footer": {
+      "about": "About",
+      "aboutDev": "About the Developer",
+      "devBy": "Developed by",
+      "personality": "a technology and web development enthusiast.",
+      "contact": "Contact",
+      "tecUsed": "Technologies Used",
+      "importantLinks": "Important Links",
+      "rights": "All rights reserved."
+   },
+   "practice": {
+      "practice": "Practice",
+      "restart": "Restart",
+      "congratulation": "Well done! you got {{n}} of {{total}}!",
+      "hits": "Hits",
+      "misses": "Misses"
+   }
+ }
+ 

@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import './Home.css'
-import Hiragana from '../../components/Hiragana/Hiragana';
+import Quiz from '../../components/Quiz/Quiz';
 
 const Home: React.FC = () => {
   return (
     <div>
-      <Hiragana />
+      <Quiz />
     </div>
   )
 }
