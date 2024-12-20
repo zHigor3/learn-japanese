@@ -89,7 +89,7 @@ const Quiz: FC = () => {
    return (
       <div className='col-11 container'>
          <h1 className='col-12' style={{display: 'flex', justifyContent: 'center'}}>
-            {t('practice.practice')} 
+            {t('practice.practice')} {String(options[0]).toUpperCase() + String(options).slice(1)}
          </h1>
          <div style={{padding: '12px', width: '250px'}}>
             <Button className="col-12" label='Hiragana' onClick={() => setOptions('hiragana')}/>
