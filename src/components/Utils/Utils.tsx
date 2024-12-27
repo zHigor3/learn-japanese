@@ -2,7 +2,7 @@
 import React, { ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 import './Utils.css'
-import { NavButtonProps, ButtonProps, DrawerMenuProps } from './UtilsInterfaces'
+import { NavButtonProps, ButtonProps, DrawerMenuProps, InputProps } from './UtilsInterfaces'
 
 export const NavButton: React.FC<NavButtonProps> = ({ to, label, className = '', onClick }) => {
   const handleClick = () => {
@@ -33,6 +33,19 @@ export const Button: React.FC<ButtonProps> = ({ label, onClick, className }) => 
     <button onClick={handleClick} className={`button ${className}`} >
       {label}
     </button>
+  )
+}
+
+export const Input: React.FC<InputProps> = (props: InputProps) => {
+  return (
+    <input 
+      type={props.type} 
+      value={props.value}
+      onChange={props.handleChange} 
+      className={`input ${props.className}`}
+      onKeyDown={props.handleConfirm}
+      placeholder={props.placeholder}
+    />
   )
 }
 

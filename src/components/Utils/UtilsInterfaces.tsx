@@ -18,3 +18,12 @@ export interface DrawerMenuProps {
   onShow: boolean
   onClose: () => void
 }
+
+export interface InputProps {
+  type: string
+  className?: string
+  value: any
+  placeholder: string
+  handleChange: (e: any) => void
+  handleConfirm: (e: any) => void
+}

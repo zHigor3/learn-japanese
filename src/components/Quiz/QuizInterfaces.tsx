@@ -9,6 +9,7 @@ export interface HiraganaState {
 /* ShowLatter */
 export interface QuizLatterProps {
    alphabet: Latter[]
+   typeOptions: 'text' | 'options'
    cb: (answer: boolean, result: Latter | null) => void
    col?: string
 }

@@ -67,4 +67,13 @@
    background-color: #999;
    transition: 0.3s;
 }
+/* -------------------------------------------------------------*/
+/* Input */
+.input {
+   border: 1px solid #000;
+   padding: 12px;
+   font-size: 18px;
+   border-radius: 6px;
+   text-align: center;
+}
  
