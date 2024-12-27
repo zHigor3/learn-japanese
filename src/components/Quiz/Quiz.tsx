@@ -2,7 +2,7 @@ import React, { FC, useEffect, useReducer, useState } from 'react'
 import './Quiz.css'
 import { HiraganaAction } from './QuizTypes';
 import { HiraganaState, Latter, QuizLatterProps } from './QuizInterfaces';
-import { Button } from '../Utils/Utils';
+import { Button, Input } from '../Utils/Utils';
 import { LoadArchive } from '../Utils/Utils';
 import { useTranslation } from 'react-i18next';
 
@@ -55,6 +55,7 @@ const hiraganaReducer = (state: HiraganaState, action: HiraganaAction): Hiragana
 const Quiz: FC = () => {
    const [alphabet, alphabetDispatch] = useReducer(hiraganaReducer, initialHiraganaState)
    const [options, setOptions] = useState<'hiragana' | 'katakana'>('hiragana')
+   const [typeOptions, setTypeOptions] = useState<'text' | 'options'>('options')
    const { t, i18n } = useTranslation();
 
    useEffect(() => {
@@ -72,7 +73,7 @@ const Quiz: FC = () => {
          }
       }
       fetchData()
-   }, [options]);
+   }, [options, typeOptions]);
 
    const handleResult = (answer: boolean, result: Latter | null) => {
       if(result !== null) {
@@ -97,7 +98,10 @@ const Quiz: FC = () => {
          <div style={{padding: '12px', width: '250px'}}>
             <Button className="col-12" label='Katakana' onClick={() => setOptions('katakana')}/>
          </div>
-         {alphabet.alphabet ? <QuizLatter col="col-12" alphabet={alphabet.alphabet} cb={handleResult} /> : undefined}
+         <div style={{padding: '12px', width: '250px'}}>
+            <Button className="col-12" label='Modo de resposta' onClick={() => setTypeOptions(typeOptions === 'options' ? 'text' : 'options')}/>
+         </div>
+         {alphabet.alphabet ? <QuizLatter col="col-12" typeOptions={typeOptions} alphabet={alphabet.alphabet} cb={handleResult} /> : undefined}
          {alphabet.alphabet.length === 0 &&
             <div className='col-12 container'>
                <h1 className='col-12' style={{textAlign: 'center'}}>{t('practice.congratulation', {n: alphabet.correctList.length, total: 71})}</h1>
@@ -122,11 +126,14 @@ const Quiz: FC = () => {
    )
 }
 
-const QuizLatter: FC<QuizLatterProps> = ({alphabet = [], cb, col = ''}) => {
+const QuizLatter: FC<QuizLatterProps> = ({alphabet = [], cb, col = '', typeOptions}) => {
    const [latter, setLatter] = useState<Latter | null>(null)
    const [options, setOptions] = useState<Latter[]>([])
+   const [optionValue, setOptionValue] = useState<string>('')
+   const [isHit, setIsHit] = useState<true | false | null>(null)
 
    useEffect(() => {
+      if(alphabet.length === 71) setIsHit(null)
       if (alphabet.length > 0) {
          const uniqueLetters = getRandomUniqueLetters(alphabet, 4)
          setLatter(uniqueLetters[0])
@@ -153,14 +160,25 @@ const QuizLatter: FC<QuizLatterProps> = ({alphabet = [], cb, col = ''}) => {
 
    const handleClick = (option: Latter) => {
       const isCorrect = option === latter;
+      setIsHit(isCorrect)
       cb(isCorrect, latter);
+   }
+
+   const handleConfirm = (e: React.KeyboardEvent<HTMLInputElement>) => {
+      if(e.key === 'Enter'){
+         (e.target as HTMLInputElement).focus()
+         const isCorrect = optionValue.toLocaleLowerCase() === latter?.sound;
+         setIsHit(isCorrect)
+         setOptionValue('')
+         cb(isCorrect, latter);
+      }
    }
 
    return (
       <div className={'container-quizlatter ' + col}>
-         <span className='col-12' style={{fontSize: '82px', textAlign: 'center'}}>{latter?.latter}</span>
+         <span className='col-12' style={{fontSize: '82px', textAlign: 'center', color: isHit === true ? '#090' : isHit === false ? '#900' : isHit === null ? '#333' : '#333'}}>{latter?.latter}</span>
 
-         {options.length > 0 && (
+         {typeOptions === 'options' && options.length > 0 && (
             <div className='container-quizlatter-options col-12'>
                {options.map((option, index) => (
                   <div className='quizlatter-options-button col-6'>
@@ -168,6 +186,15 @@ const QuizLatter: FC<QuizLatterProps> = ({alphabet = [], cb, col = ''}) => {
                   </div>
                ))}
             </div>
+         )}
+         {typeOptions === 'text' && (
+            <Input 
+               type='text' 
+               value={optionValue}
+               handleChange={e => setOptionValue(e.target.value)}
+               handleConfirm={handleConfirm}
+               placeholder='Informe a pronúncia'
+            />
          )}
       </div>
    )
