@@ -117,7 +117,7 @@ const Quiz: FC = () => {
          {alphabet.incorrectList.length > 0 && 
             <div className='col-12' style={{marginTop: '12px'}}>
                <span>{t('practice.misses')}: </span>
-               {alphabet.incorrectList.map((val, ind) => <span>{val.latter}</span>)}
+               {alphabet.incorrectList.map((val, ind) => <span>{val.latter} - {val.sound.toUpperCase()}; </span>)}
             </div>
          }
          
@@ -187,7 +187,7 @@ const QuizLatter: FC<QuizLatterProps> = ({alphabet = [], cb, col = '', typeOptio
                ))}
             </div>
          )}
-         {typeOptions === 'text' && (
+         {typeOptions === 'text' && options.length > 0 && (
             <Input 
                type='text' 
                value={optionValue}
